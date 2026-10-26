@@ -1,0 +1,27 @@
+[project]
+name = "project-init"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "newbluecat", email = "213210421+newbluecat@users.noreply.github.com" },
+]
+requires-python = ">=3.14"
+dependencies = ["keyring>=25.7.0"]
+
+[project.scripts]
+project-init = "project_init:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["T201", "CPY001"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
