@@ -124,7 +124,6 @@ def main() -> None:
 
     args: argparse.Namespace = parser.parse_args()
 
-    token: str | None = None
     if args.token is not None:
         token = args.token
         save_token(token)
@@ -146,8 +145,8 @@ def main() -> None:
     git_dir: Path = project_dir / ".git"
     if not git_dir.exists():
         run_cmd(["git", "init"], cwd=project_dir)
-    clone_url: str | None = create_github_repo(name, desc, private=args.private, token=token)
 
+    clone_url: str | None = create_github_repo(name, desc, private=args.private, token=token)
     if clone_url is None:
         print("Aborting git push due to GitHub API failure.")
         sys.exit(1)
