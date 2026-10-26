@@ -1,7 +1,7 @@
 [project]
 name = "project-init"
 version = "0.1.0"
-description = "Add your description here"
+description = "A CLI utility to simplify creating projects and syncing them with a GitHub repository"
 readme = "README.md"
 authors = [
     { name = "newbluecat", email = "213210421+newbluecat@users.noreply.github.com" },
@@ -10,7 +10,7 @@ requires-python = ">=3.14"
 dependencies = ["keyring>=25.7.0"]
 
 [project.scripts]
-project-init = "project_init:main"
+project-init = "project_init.main:main"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]
@@ -25,3 +25,8 @@ ignore = ["T201", "CPY001"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.22.3",
+]

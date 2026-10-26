@@ -28,6 +28,16 @@ def init_python(name: str, desc: str) -> None:
     run_cmd(["uv", "init", name])
 
     project_dir: Path = Path(name).resolve()
+
+    custom_gitignore: Path = Path("~/Projects/extras/.gitignore-python").expanduser()
+    target_gitignore: Path = project_dir / ".gitignore"
+
+    if custom_gitignore.exists():
+        shutil.copyfile(custom_gitignore, target_gitignore)
+        print("Replaced default .gitignore with custom template.")
+    else:
+        print(f"Warning: Custom gitignore not found at {custom_gitignore}. Keeping default.")
+
     toml_path: Path = project_dir / "pyproject.toml"
 
     if toml_path.exists():
@@ -49,6 +59,5 @@ def init_python(name: str, desc: str) -> None:
         content += extras
 
         toml_path.write_text(content)
-        shutil.copyfile("~/Projects/extras/.gitignore-python", project_dir)
 
         print("Updated pyproject.toml with description.")
