@@ -11,7 +11,8 @@ from pathlib import Path
 
 import keyring
 import keyring.errors
-from _python_builder import init_python
+
+from project_init._python_builder import init_python
 
 
 def run_cmd(cmd: list[str], cwd: Path | str | None = None) -> None:
