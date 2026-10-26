@@ -34,8 +34,9 @@ def create_github_repo(name: str, description: str, *, private: bool, token: str
     """Create a GitHub repository via API and returns the clone URL."""
     url: str = "https://api.github.com/user/repos"
     headers: dict[str, str] = {
-        "Authorization": f"token {token}",
-        "Accept": "application/vnd.github.v3+json",
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
         "Content-Type": "application/json",
     }
     data: dict[str, str | bool] = {
@@ -54,10 +55,10 @@ def create_github_repo(name: str, description: str, *, private: bool, token: str
     try:
         with urllib.request.urlopen(req) as response:
             resp_data: dict[str, object] = json.loads(response.read().decode("utf-8"))
-            clone_url: object = resp_data.get("clone_url")
+            ssh_url: object = resp_data.get("ssh_url")
 
-            if isinstance(clone_url, str):
-                return clone_url
+            if isinstance(ssh_url, str):
+                return ssh_url
             return None
     except urllib.error.HTTPError as e:
         print(f"Failed to create GitHub repo. HTTP {e.code}: {e.read().decode('utf-8')}")
