@@ -103,6 +103,7 @@ def main() -> None:
     common_parser.add_argument("name", type=str, help="Name of project and repo")
     common_parser.add_argument("-d", "--description", type=str, default="A new project :)", help="Project description")
     common_parser.add_argument(
+        "-p",
         "--private",
         action="store_true",
         help="Upload to private GitHub repo",
