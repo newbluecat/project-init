@@ -13,11 +13,11 @@ An opinionated command-line tool that automates the creation of (Python) project
 - **GitHub SSH:** Your machine must be configured to communicate with GitHub with SSH, as this script pushes using the `git@github.com` remote URL to avoid password prompts.
 
 - **GitHub Fine-grained API Token:** Must be configured with the following permissions:
-    - Resource owner: Your personal GitHub account.
-    - Repository access: "All repositories" (Required because the script creates a repository that does not exist yet).
-    - Repository permissions:
-        - Repository creation: Read and write (Or "Administration" if you are on an older GitHub Enterprise server).
-        - Contents: Read and write.
+    - **Resource owner:** Your personal GitHub account.
+    - **Repository access:** "All repositories" (Required because the script creates a repository that does not exist yet).
+    - **Repository permissions:**
+        - **Repository creation:** Read and write (Or "Administration" if you are on an older GitHub Enterprise server).
+        - **Contents:** Read and write.
 
 ### Python Dependencies
 
@@ -60,5 +60,5 @@ This project was primarily made for me, and so there are things that I like that
 | Option / Flag         | Description                                                                        |
 |-----------------------|------------------------------------------------------------------------------------|
 | `-d`, `--description` | Sets the project description for the initialized project and remote repository.    |
-| `--private`           | Marks the created GitHub repository as private rather than public.                 |
+| `-p`, `--private`     | Marks the created GitHub repository as private rather than public.                 |
 | `-t`, `--token`       | Accepts the GitHub PAT to store securely in the operating system's native keyring. |
